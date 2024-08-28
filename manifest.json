@@ -1,0 +1,21 @@
+{
+  "name": "Nik's Crappy Initiative Tracker",
+  "short_name": "Initiative",
+  "description": "A simple initiative tracker for tabletop RPGs",
+  "start_url": "index.html",
+  "display": "standalone",
+  "background_color": "#f7f3e8",
+  "theme_color": "#b8860b",
+  "icons": [
+    {
+      "src": "icon-192x192.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "icon-512x512.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ]
+}

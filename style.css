@@ -1,0 +1,92 @@
+body {
+	background-color: #f7f3e8; /* Parchment background */
+	color: #333; /* Dark brown text */
+    text-align: center;
+    margin: 0px;
+    padding: 0px;
+  }
+
+#button-wrapper {
+    margin-top: 20px;
+}
+
+  #initiative-list {
+	padding: 5px;
+    width: 100%;
+    text-align: center;
+    margin-top: 10px;
+    position: relative;
+  }
+
+  .initiative-entry {
+	display: flex;
+	margin: 50px;
+	
+	font-family: 'Dancing Script', cursive;
+	font-size: 2.5em;
+	position: relative;
+	border: 3px solid #654321; /* Darker brown border */
+	padding: 10px;
+	background-color: #fff5e1; /* Slightly lighter parchment */
+	align-items: center; /* Vertically align items within the entry */
+  }
+
+  .name {
+	display: inline-block;
+    text-align: left;
+  }
+
+  .name::first-letter {
+	font-size: 3em;
+	float: left;
+	line-height: 0.8;
+	margin-right: .5rem;
+  }
+
+  .number {
+	display: inline-block;
+	font-size: 3em;
+	margin-left: auto;
+	margin-right: 30px; /* Add space between number and close button */
+  }
+
+  .close-button {
+	position: absolute;
+	top: 10px;
+	right: -20px;
+	transform: translateY(-75%); /* Center vertically */
+	cursor: pointer;
+	font-size: 50px;
+	border-radius: 50%; /* Make it a circle */
+	width: 50px;
+	height: 50px;
+	text-align: center;
+    vertical-align: middle;
+	line-height: 45px; /* Center text vertically */
+	background-color: #b8860b; /* Dark gold background */
+	color: white;
+	font-family: "Arial", "Sans-Serif";
+  }
+
+  .icon {
+	margin: 0px 30px 0px 5px ; /* Add margin around the icon */
+	font-size: 2em; /* Adjust icon size as needed */
+	height: 100%; /* Make the icon take up full entry height */
+	display: flex;   /* Enable flexbox for vertical centering */
+	align-items: center; /* Vertically center the icon */
+  }
+
+  button {
+	background-color: #b8860b; /* Dark gold background */
+	color: white;
+	border: none;
+	padding: 10px 20px;
+	font-size: 2.5em;
+	margin-right: 10px;
+	cursor: pointer;
+	border-radius: 5px; /* Rounded corners */
+	font-family: 'Dancing Script', cursive;
+    width: 22%;
+    min-height: 2em;
+    vertical-align: middle;
+  }

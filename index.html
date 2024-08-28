@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <title>Initiative Tracker</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet"> 
+  <link rel="manifest" href="manifest.json"> 
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"> 
+  <link rel="stylesheet" href="style.css" >
+  <script src="main.js"></script>
+</head>
+<body>
+    <div id="button-wrapper">
+  <button id="add-entry">Add</button>
+  <button id="sort-entries">Sort</button>
+  <button id="next">Next</button>
+</div>
+
+
+  <div id="initiative-list">
+    </div>
+
+  <script>
+    const initiativeList = document.getElementById('initiative-list');
+    const addEntryButton = document.getElementById('add-entry');
+    const sortEntriesButton = document.getElementById('sort-entries');
+    const nextButton = document.getElementById('next');
+
+    // --- Event Listeners --- //
+
+    addEntryButton.addEventListener('click', function() {addEntry()});
+    sortEntriesButton.addEventListener('click', sortEntries);
+    nextButton.addEventListener('click', advanceInitiative);
+ 
+    // Load entries on page load
+    loadEntriesFromLocalStorage();
+
+    // Set the interval (e.g., every 30 seconds)
+    const saveInterval = 30000; // 30 seconds in milliseconds
+
+// Function to periodically save entries
+function periodicSave() {
+    console.log("Saving...");
+  saveEntriesToLocalStorage();
+  
+}
+
+// Start the interval
+setInterval(periodicSave, saveInterval);
+  </script>
+</body>
+</html>
