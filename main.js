@@ -35,24 +35,22 @@ const freeIconClasses = [
 ];
 
 
-// Function to select all text in an element
-function selectText(element) {
-  const range = document.createRange();
-  range.selectNodeContents(element);
-  const selection = window.getSelection();
-  selection.removeAllRanges();
-  selection.addRange(range);
-}
+
+
+//   range.selectNodeContents(element);
+//   const selection = window.getSelection();
+//   selection.removeAllRanges();
+//   selection.addRange(range);
+// }
 
 // Function to validate number input and apply red text if invalid
-function validateNumber(numberDiv) {
-  const numberText = numberDiv.textContent;
-  if (!/^-?\d+$/.test(numberText)) { 
-    numberDiv.style.color = 'red';
-  } else {
-    numberDiv.style.color = ''; 
-  }
-}
+ function validateNumber(numberDiv) {
+     const invalidChars = /[^0-9]/gi
+        if(invalidChars.test(numberDiv.value)) {
+            numberDiv.value = numberDiv.value.replace(invalidChars,"");
+            }
+    
+ }
 
 // Add event listeners to new initiative entries
 function setupEntryEvents(entry) {
@@ -60,35 +58,15 @@ function setupEntryEvents(entry) {
   const numberDiv = entry.querySelector('.number');
   const iconDiv = entry.querySelector('.icon');
 
-  nameDiv.addEventListener('click', () => selectText(nameDiv));
-  numberDiv.addEventListener('click', () => selectText(numberDiv));
-  // Add event listener to icon divs
-  initiativeList.addEventListener('click', event => {
-    const target = event.target;
-    if (target.classList.contains('icon i')) {
-      const entry = target.closest('.initiative-entry');
-      randomizeIcon(entry);
-    }
-  });// Add event listener to icon divs
-  initiativeList.addEventListener('click', event => {
-    const target = event.target;
-    if (target.classList.contains('icon i')) {
-      const entry = target.closest('.initiative-entry');
-      randomizeIcon(entry);
-    }
-  });// Add event listener to icon divs
-  initiativeList.addEventListener('click', event => {
-    const target = event.target;
-    if (target.classList.contains('icon i')) {
-      const entry = target.closest('.initiative-entry');
-      randomizeIcon(entry);
-    }
-  });
 
-  numberDiv.addEventListener('input', () => {
-    validateNumber(numberDiv);
-    saveEntriesToLocalStorage(); // Save on input change
-  });
+  nameDiv.addEventListener('focus', () => nameDiv.select());
+  numberDiv.addEventListener('focus', () => numberDiv.select());
+  //numberDiv.addEventListener('click', () => selectText(numberDiv));
+ 
+ numberDiv.addEventListener('input', () => {
+     validateNumber(numberDiv);
+     saveEntriesToLocalStorage(); // Save on input change
+   });
 }
 
 function addEntry(characterName = 'Name', icon = (freeIconClasses[Math.floor(Math.random() * freeIconClasses.length)]) , initiative = 0 ) {
@@ -100,8 +78,8 @@ newEntry.classList.add('initiative-entry');
 
 newEntry.innerHTML = `
 <div class="icon"><i class="${icon}"></i></div> 
-<div class="name" contenteditable="true">${characterName}</div>
-<div class="number" contenteditable="true" inputmode="numeric" type="decimal" pattern="\\d+">${initiative}</div>
+<input class="name" value="${characterName}">
+<input class="number"  inputmode="decimal" type="tel" value="${initiative}">
 <span class="close-button">x</span>
 `;
 initiativeList.prepend(newEntry); 
@@ -120,8 +98,8 @@ function sortEntries() {
   const entries = Array.from(document.querySelectorAll('.initiative-entry'));
 
   entries.sort((a, b) => {
-    const numA = parseInt(a.querySelector('.number').textContent, 10);
-    const numB = parseInt(b.querySelector('.number').textContent, 10);
+    const numA = parseInt(a.querySelector('.number').value, 10);
+    const numB = parseInt(b.querySelector('.number').value, 10);
     return numB - numA; 
   });
 
@@ -143,8 +121,8 @@ function saveEntriesToLocalStorage() {
   let entries = Array.from(document.querySelectorAll('.initiative-entry'));
   
   let entriesData = entries.map(entry => ({
-    name: entry.querySelector('.name').textContent,
-    initiative: entry.querySelector('.number').textContent,
+    name: entry.querySelector('.name').value,
+    initiative: entry.querySelector('.number').value,
     icon: entry.querySelector('.icon i').className // Save the icon class
   }));
   localStorage.setItem('initiativeEntries', JSON.stringify(entriesData));

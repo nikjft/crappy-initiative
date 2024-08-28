@@ -31,23 +31,36 @@ body {
 	align-items: center; /* Vertically align items within the entry */
   }
 
+input, textarea {
+    background-color: none;
+    font-family: 'Dancing Script', cursive;
+	border: none;
+    padding: none;
+    text-indent: 5px;
+	background-color: #fff5e1; /* Slightly lighter parchment */
+}
+
   .name {
+      margin-left: 5px;
 	display: inline-block;
     text-align: left;
+    font-size: 1em;
+    max-width: 70%;
   }
 
-  .name::first-letter {
+  /* .name::first-letter {
 	 font-size: 1.5em; 
 	float: left;
 	line-height: 0.8;
 	margin-right: .05em;
-  }
+  } */
 
   .number {
 	display: inline-block;
 	font-size: 1.5em;
 	margin-left: auto;
 	margin-right: 30px; /* Add space between number and close button */
+    max-width: 20%;
   }
 
   .close-button {
@@ -69,7 +82,7 @@ body {
   }
 
   .icon {
-	margin: 0px 30px 0px 5px ; /* Add margin around the icon */
+	margin: 0px 35px 0px 5px ; /* Add margin around the icon */
 	font-size: 2em; /* Adjust icon size as needed */
 	height: 100%; /* Make the icon take up full entry height */
     width: 150px;
