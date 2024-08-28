@@ -45,7 +45,7 @@ input, textarea {
 	display: inline-block;
     text-align: left;
     font-size: 1em;
-    max-width: 70%;
+    max-width: 50%;
   }
 
   /* .name::first-letter {
