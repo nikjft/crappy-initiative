@@ -101,7 +101,7 @@ newEntry.classList.add('initiative-entry');
 newEntry.innerHTML = `
 <div class="icon"><i class="${icon}"></i></div> 
 <div class="name" contenteditable="true">${characterName}</div>
-<div class="number" contenteditable="true">${initiative}</div>
+<div class="number" contenteditable="true" inputmode="numeric" type="decimal" pattern="\\d+">${initiative}</div>
 <span class="close-button">x</span>
 `;
 initiativeList.prepend(newEntry); 

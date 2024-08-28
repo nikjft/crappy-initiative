@@ -23,7 +23,7 @@ body {
 	margin: 50px;
 	
 	font-family: 'Dancing Script', cursive;
-	font-size: 2.5em;
+	font-size: 4em;
 	position: relative;
 	border: 3px solid #654321; /* Darker brown border */
 	padding: 10px;
@@ -37,15 +37,15 @@ body {
   }
 
   .name::first-letter {
-	font-size: 3em;
+	 font-size: 1.5em; 
 	float: left;
 	line-height: 0.8;
-	margin-right: .5rem;
+	margin-right: .05em;
   }
 
   .number {
 	display: inline-block;
-	font-size: 3em;
+	font-size: 1.5em;
 	margin-left: auto;
 	margin-right: 30px; /* Add space between number and close button */
   }
@@ -72,8 +72,13 @@ body {
 	margin: 0px 30px 0px 5px ; /* Add margin around the icon */
 	font-size: 2em; /* Adjust icon size as needed */
 	height: 100%; /* Make the icon take up full entry height */
-	display: flex;   /* Enable flexbox for vertical centering */
+    width: 150px;
+	display: inline-block;   /* Enable flexbox for vertical centering */
 	align-items: center; /* Vertically center the icon */
+  }
+
+  .icon i {
+      align-items: center;
   }
 
   button {
