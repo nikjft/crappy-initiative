@@ -1,110 +1,148 @@
 body {
-	background-color: #f7f3e8; /* Parchment background */
-	color: #333; /* Dark brown text */
-    text-align: center;
+    background-color: #f7f3e8;
+    color: #333;
+    text-align: center; /* Centers text within the body */
     margin: 0px;
     padding: 0px;
-  }
+    font-size: clamp(18px, 1.2vw, 20px);
+    display: flex;               /* Enables flexbox for centering */
+    flex-direction: column;    /* Arranges content vertically */
+    align-items: center;        /* Centers content horizontally */
+    min-height: 100vh;          /* Ensures body fills viewport height */
+}
+
+#content-wrapper {  /* New container for limiting width */
+    max-width: 600px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;  /* Ensure content within stays in a column */
+    align-items: center;  /* Center content within the wrapper */
+}
 
 #button-wrapper {
-    margin-top: 20px;
+    margin-top: 2vw;
+    width: 100%;  /* Make button wrapper fill the container width */
+    display: flex; /* Use flexbox to center buttons */
+    justify-content: center;
 }
 
-  #initiative-list {
-	padding: 5px;
+
+#initiative-list {
+    padding: 0.5vw;
     width: 100%;
     text-align: center;
-    margin-top: 10px;
+    margin-top: 1vw;
     position: relative;
-  }
-
-  .initiative-entry {
-	display: flex;
-	margin: 50px;
-	
-	font-family: 'Dancing Script', cursive;
-	font-size: 4em;
-	position: relative;
-	border: 3px solid #654321; /* Darker brown border */
-	padding: 10px;
-	background-color: #fff5e1; /* Slightly lighter parchment */
-	align-items: center; /* Vertically align items within the entry */
-  }
-
-input, textarea {
-    background-color: none;
-    font-family: 'Dancing Script', cursive;
-	border: none;
-    padding: none;
-    text-indent: 5px;
-	background-color: #fff5e1; /* Slightly lighter parchment */
 }
 
-  .name {
-      margin-left: 5px;
-	display: inline-block;
+.initiative-entry {
+    display: flex;
+    margin: 2vw;
+    font-family: 'Dancing Script', cursive;
+    font-size: 3vw;
+    position: relative;
+    border: 0.3vw solid #654321; /* Use vw for border thickness */
+    padding: 1vw; /* Use vw for consistent padding */
+    background-color: #fff5e1;
+    align-items: center;
+}
+
+input, textarea {
+    background-color: #fff5e1;
+    font-family: 'Dancing Script', cursive;
+    border: none;
+    padding: 0;  /* No padding needed here */
+    text-indent: 0.5vw;  /* Use vw for consistent indent */
+}
+
+.name {
+    
+	font-size: clamp(16pt, 1em, 24pt);  /* Example values */
+    margin-right: 1vw;
+    margin-left: 0.5vw;
+    display: inline-block;
     text-align: left;
-    font-size: 1em;
     max-width: 50%;
-  }
+}
 
-  /* .name::first-letter {
-	 font-size: 1.5em; 
-	float: left;
-	line-height: 0.8;
-	margin-right: .05em;
-  } */
 
-  .number {
-	display: inline-block;
-	font-size: 1.5em;
-	margin-left: auto;
-	margin-right: 30px; /* Add space between number and close button */
+.number {
+    display: inline-block;
+	font-size: clamp(18pt, 1.5em, 28pt);  /* Example values */
+
+    
+    margin-right: 3vw; /* Adjusted margin */
     max-width: 20%;
-  }
+}
 
-  .close-button {
-	position: absolute;
-	top: 10px;
-	right: -20px;
-	transform: translateY(-75%); /* Center vertically */
-	cursor: pointer;
-	font-size: 50px;
-	border-radius: 50%; /* Make it a circle */
-	width: 50px;
-	height: 50px;
-	text-align: center;
-    vertical-align: middle;
-	line-height: 45px; /* Center text vertically */
-	background-color: #b8860b; /* Dark gold background */
-	color: white;
-	font-family: "Arial", "Sans-Serif";
-  }
+.close-button {
+    position: absolute; /* Position relative to parent (initiative-entry) */
+    top: -0.5em;         /* Offset from the top (use em for relative sizing) */
+    right: -0.5em;        /* Offset from the right */
+    cursor: pointer;
+    font-size: 1.2em;    /* Font size relative to parent */
+    border-radius: 50%;
+    width: 1.5em;        /* Width relative to parent's font size */
+    height: 1.5em;       /* Height relative to parent's font size */
+    text-align: center;
+    line-height: 1.3em; /* Line height relative to parent's font size */
+    background-color: #b8860b;
+    color: white;
+    font-family: "Arial", "Sans-Serif";
+}
 
-  .icon {
-	margin: 0px 35px 0px 5px ; /* Add margin around the icon */
-	font-size: 2em; /* Adjust icon size as needed */
-	height: 100%; /* Make the icon take up full entry height */
-    width: 150px;
-	display: inline-block;   /* Enable flexbox for vertical centering */
-	align-items: center; /* Vertically center the icon */
-  }
+.icon {
+    margin: 0 1.5vw 0 0.5vw;
+    font-size: 1.5em;
+    width: 4em; /* Fixed width (adjust as needed) */
+    height: auto; 
+    display: inline-block;  /* changed to display: inline-flex to align icons vertically */
+    align-items: center; /* vertically align icon to the center of initiative-entry */
+}
 
-  .icon i {
-      align-items: center;
-  }
 
-  button {
-	background-color: #b8860b; /* Dark gold background */
-	color: white;
-	border: none;
-	padding: 10px 20px;
-	font-size: 2.5em;
-	margin-right: 10px;
-	cursor: pointer;
-	border-radius: 5px; /* Rounded corners */
-	font-family: 'Dancing Script', cursive;
-    width: 22%;
+.icon i {
+    align-items: center; /* Not needed for inline-block */
+}
+
+
+button {
+    background-color: #b8860b;
+    color: white;
+    border: none;
+    padding: 0.5vw 1vw; /* Use vw for padding */
+    font-size: clamp(16px, 1em, 24px);
+    margin-right: 0.5vw;
+    cursor: pointer;
+    border-radius: 5px;
+    font-family: 'Dancing Script', cursive;
+    width: 20vw;
+	min-width: 100px;
     min-height: 2em;
-    vertical-align: middle;
-  }
+}
+
+@media (min-width: 600px) {  /* When viewport is wider than 600px */
+    body {
+        font-size: 18px; /* Fixed size */
+    }
+    .initiative-entry {
+        font-size: 2em; /* Or use em relative to parent */
+        margin: 10px;   /* Fixed margins, etc. */
+    }
+    /* ... other styles to adjust for larger screens ... */
+    .close-button {
+        font-size: 20px;  /* Fixed size */
+        width: 20px;
+        height: 20px;
+        line-height: 18px;
+    }
+
+    button {
+        font-size: 18px;
+        padding: 8px 16px; /* Fixed padding */
+        width: auto; /* Let buttons size naturally */
+        /* Add width or max-width back here if you prefer */
+    }
+
+
+}

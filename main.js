@@ -1,4 +1,6 @@
 
+
+
 const freeIconClasses = [
 "fas fa-dragon",
 "fas fa-hat-wizard", 
@@ -6,36 +8,50 @@ const freeIconClasses = [
 "fas fa-skull-crossbones",
 "fas fa-dungeon",
 "fas fa-scroll",
-//"fas fa-swords",
-// "fas fa-sickle",
-// "fas fa-octopus",
 "fas fa-hand-fist",
-//"fas fa-hammer-war",
-//"fas fa-eye-evil",
-"fas fa-dice-d20",
-// "fas fa-bow-arrow",
-//"fas fa-book-sparkles",
 "fas fa-book-skull",
 "fas fa-spider",
-"fas fa-dragon",
 "fas fa-ghost",
-// "fas fa-bat",
-// "fas fa-pegasus",
-//"fas fa-person-dress-fairy",
-//"fas fa-hydra",
-//"fas fa-mandolin",
-// "fas fa-mace",
-//"fas fa-unicorn",
 "fas fa-skull",
 "fas fa-spaghetti-monster-flying",
 "fas fa-shield",
 "fas fa-user-ninja",
-"fas fa-hand-holding-dollar"
-// Add more icon classes as needed
+"fas fa-hand-holding-dollar",
+"fas fa-wand-sparkles",
+"fas fa-chess-queen",
+"fas fa-bolt",
+"fas fa-biohazard",
+"fas fa-grimace",
+"fas fa-mosquito",
+"fas fa-paw",
+"fas fa-crow",
+"fa-brands fa-d-and-d"
+
+
 ];
 
+/* OTHER COOL ICONS I'D HAVE TO PAY FOR
 
 
+"fas fa-swords",
+"fas fa-sickle",
+"fas fa-octopus",
+"fas fa-hammer-war",
+"fas fa-eye-evil",
+ "fas fa-bow-arrow",
+"fas fa-book-sparkles",
+ "fas fa-bat",
+ "fas fa-pegasus",
+"fas fa-person-dress-fairy",
+"fas fa-hydra",
+"fas fa-mandolin",
+ "fas fa-mace",
+"fas fa-unicorn",
+
+// Add more icon classes as needed
+
+*/
+""
 
 //   range.selectNodeContents(element);
 //   const selection = window.getSelection();
@@ -70,29 +86,43 @@ function setupEntryEvents(entry) {
 }
 
 function addEntry(characterName = 'Name', icon = (freeIconClasses[Math.floor(Math.random() * freeIconClasses.length)]) , initiative = 0 ) {
-    const newEntry = document.createElement('div');
-newEntry.classList.add('initiative-entry');
+  const newEntry = document.createElement('div');
+  newEntry.classList.add('initiative-entry');
 
-// Get a random icon class from the array
-//let randomIconClass = freeIconClasses[Math.floor(Math.random() * freeIconClasses.length)];
+  newEntry.innerHTML = `
+      <div class="icon"><i class="${icon}"></i></div> 
+      <input class="name" value="${characterName}">
+      <input class="number" inputmode="decimal" type="tel" value="${initiative}">
+      <span class="close-button">x</span>
+  `;
+  initiativeList.prepend(newEntry); 
 
-newEntry.innerHTML = `
-<div class="icon"><i class="${icon}"></i></div> 
-<input class="name" value="${characterName}">
-<input class="number"  inputmode="decimal" type="tel" value="${initiative}">
-<span class="close-button">x</span>
-`;
-initiativeList.prepend(newEntry); 
+  const iconDiv = newEntry.querySelector('.icon'); // Select the iconDiv *after* it's added to the DOM
 
   // Add event listener to the close button of the new entry
   newEntry.querySelector('.close-button').addEventListener('click', () => {
-    newEntry.remove();
-    saveEntriesToLocalStorage(); // Save after removing an entry
+      newEntry.remove();
+      saveEntriesToLocalStorage(); 
   });
 
+  // Add icon cycling functionality *after* iconDiv is defined
+  iconDiv.addEventListener('click', () => {
+    const iElement = iconDiv.querySelector('i'); // Select the <i> element directly
+    let currentIconClass = iElement.className; 
+    let currentIconIndex = freeIconClasses.indexOf(currentIconClass);
+
+    let nextIconIndex = (currentIconIndex + 1) % freeIconClasses.length; // Correct calculation
+    let nextIconClass = freeIconClasses[nextIconIndex];
+
+    iElement.className = nextIconClass; // Update the class of the <i> element
+    saveEntriesToLocalStorage();
+});
+
   setupEntryEvents(newEntry);
-  saveEntriesToLocalStorage(); // Save after adding a new entry
+  saveEntriesToLocalStorage(); 
 }
+
+
 
 function sortEntries() {
   const entries = Array.from(document.querySelectorAll('.initiative-entry'));
