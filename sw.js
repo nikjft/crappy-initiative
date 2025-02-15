@@ -8,9 +8,7 @@ self.addEventListener('install', function(event) {
                 '/index.html',
                 '/main.js', // Cache your JavaScript file
                 '/styles.css', // Cache your CSS file
-                '/fontawesome.min.css',  // If you have a local copy
-                '/icon-192x192.png', // Cache your icons
-                '/icon-512x512.png'
+                '/fontawesome.min.css',  // If you have a local copy                '/icon-512x512.png'
                 // Add any other essential files here
             ]);
         })
